@@ -1,0 +1,25 @@
+body {
+    background: linear-gradient(90deg, white 21px, transparent 1%) center, linear-gradient(white 21px, transparent 1%) center, black;
+    background-size: 22px 22px;
+}
+
+.jumbotron {
+    border: black;
+    min-height: 30vh;
+    background: whitesmoke;
+}
+
+.dblue{
+    color:#006fb7
+}
+
+.dred{
+    color: #b21f2d
+}
+
+.log-area {
+    rows: 20;
+    cols: 150;
+    width: 70%;
+    height: 50vh;
+}

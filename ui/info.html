@@ -1,0 +1,54 @@
+<div id="news">
+    <div class="card">
+        <img src="{{@BASE}}/ui/img/logo/eldes.svg" class="card-img-top blue-ish-background"/>
+        <hr class="mb-1"/>
+        <div class="card-body">
+            <div class="card border border-black mx-auto my-5">
+                <div class="card-header"><h2
+                        class="display-4 blue-ish-background text-white rounded py-4 px-4">
+                    <span class="ml-5 my-3">Návod na používání elektronické úřední desky</span></h2></div>
+
+                <div class="card-body lead">
+
+                    <h3 class="mt-2 font-weight-bold">Spodní panel</h3>
+                    <hr class="my-1">
+                    Zde se nachází ovládací prvky úřední desky.
+                    <img src="{{@BASE}}/ui/img/navod/footer.PNG" class="img-fluid img-thumbnail">
+                    <ul class="list-group">
+                        <li class="list-group-item"><img src="{{@BASE}}/ui/icons/accessible-white-24dp.svg" class="rounded mr-2" style="width:32px;height:32px; background: red"><span class="font-weight-bolder">Režim pro invalidy</span> - stisknutím tohoto tlačítka zapnete režim pro invalidy, tím se zjednoduší ovládání pro vozíčkáře.</li>
+                        <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="rounded p-1 mr-2 bi blue-ish-background bi-house-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/><path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/></svg> Domů - tímto tlačítkem se dostanete do hlavního menu</li>
+                        <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="rounded p-1 mr-2 bi blue-ish-background bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg> Vyhledat - tímto tlačítkem otevřete vyhledávací lištu a dotykovou klávesnici při procházení dokumentů na úřední desce</li>
+                    </ul>
+
+                    <h3 class="mt-5 font-weight-bold">Hlavní menu</h3>
+                    <hr class="my-1">
+                    V hlavním menu se nachází rozcestník ke všem ostatním funkcím desky.
+
+                    <h3 class="mt-5 font-weight-bold">Úřední deska</h3>
+                    <hr class="my-1">
+                    <h4 class="mt-5 font-weight-bold">Všechny dokumenty</h4>
+                    Zde můžete procházet všechny současně vyvěšené dokumenty na úřední desce města Děčín. Po kliknutí na tlačítko <img src="{{@BASE}}/ui/img/navod/buttonp.PNG" class="img-fluid">
+                    se vám zobrazí detailně celé znění vyvěšeného dokumentu, nachází se zde i QR kód, který když naskenujete mobilním telefonem, můžete si dokument zobrazit nebo stáhnout v telefonu.
+
+                    Stránku s dokumenty můžete procházet pomocí velkých modrých šipek nebo čísel stránek v pravo dole.
+                    Chcete-li, můžete vyhledat část textu, datum, nebo kategorii pomocí dotykové klávesnice:
+                    <img src="{{@BASE}}/ui/img/navod/keyboard.PNG" class="img-fluid img-thumbnail my-2">
+                    Desku můžete po použití opustit, není potřeba jí vypínat a podobně, sama se přepne do klidového režimu.
+
+                    <h4 class="mt-5 font-weight-bold">Filtrování dokumentů</h4>
+                    Pokud vás zajímá jen některá kategorie dokumentů, můžete je vyfiltrovat v hlavním menu.
+
+                    Dokumenty se také dají filtrovat podle sloupců (den vyvěšení, typ dokumentu, zdroj), stačí, když kliknete na hlavičku sloupce:
+                    <img src="{{@BASE}}/ui/img/navod/header.PNG" class="img-fluid img-thumbnail my-2">
+                    Šipka indikuje, jestli řadíte dokumenty sestupně nebo vzestupně (podle data nebo abecedně).
+                    <h3 class="mt-5 font-weight-bold">Novinky</h3>
+                    <hr class="my-1">
+                    Zde můžete číst nejnovější zprávy z Děčína a okolí.
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<include href="inner_footer.html"/>

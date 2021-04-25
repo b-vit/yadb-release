@@ -1,0 +1,49 @@
+<div class="jumbotron jumbotron-fluid my-0">
+    <div class="container">
+        <h1 class="display-4">Logy</h1>
+        <p class="lead dred">Zde naleznete informace o běhu systému</p>
+    </div>
+</div>
+
+<ul class="nav nav-tabs bg-light" id="logTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="userLog-tab" data-toggle="tab" href="#userLog" role="tab" aria-controls="userLog"
+           aria-selected="true">Uživatelský log</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="systemLog-tab" data-toggle="tab" href="#systemLog" role="tab" aria-controls="systemLog"
+           aria-selected="false">Systémový log</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="errorLog-tab" data-toggle="tab" href="#errorLog" role="tab" aria-controls="errorLog"
+           aria-selected="false">Chybový log</a>
+    </li>
+</ul>
+<div class="tab-content" id="logTabContent">
+    <div class="tab-pane fade show active" id="userLog" role="tabpanel" aria-labelledby="userLog-tab">
+        <div class="card">
+            <textarea id="user-log-area" class="log-area w-100">{{@user_log}}</textarea>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="systemLog" role="tabpanel" aria-labelledby="systemLog-tab">
+        <div class="card">
+            <textarea id="system-log-area" class="log-area w-100">{{@system_log}}</textarea>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="errorLog" role="tabpanel" aria-labelledby="errorLog-tab">
+        <div class="card">
+            <textarea id="error-log-area" class="log-area w-100">{{@error_log}}</textarea>
+        </div>
+    </div>
+</div>
+
+<script>
+    var Utextarea = document.getElementById('user-log-area');
+    Utextarea.scrollTop = Utextarea.scrollHeight;
+
+    var Stextarea = document.getElementById('system-log-area');
+    Stextarea.scrollTop = Stextarea.scrollHeight;
+
+    var Etextarea = document.getElementById('error-log-area');
+    Etextarea.scrollTop = Etextarea.scrollHeight;
+</script>

@@ -1,0 +1,113 @@
+<style>
+    .jumbotron {
+        background-image: url("{{@BASE}}/ui/img/wave2.svg");
+        background-size: cover;
+        min-height: 30vh;
+    }
+</style>
+
+<div style="height: 100vh; display: flex; background-color: white">
+    <div class="container-fluid my-auto" style="display: flex; align-items: center;">
+
+        <div class="row"  style="flex-grow: 1;">
+
+            <div class="col-lg-6 mx-0 px-0">
+                <div style="width:100%;height:100%;background:white; display: flex; align-items: center; justify-content: center">
+                    <h1>
+                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                  d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
+                            <path fill-rule="evenodd"
+                                  d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
+                        </svg>
+                        Konfigurace elektronické úřední desky
+                    </h1>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mx-0 px-0">
+                <div class="card bg-light px-5 py-5">
+                    <form action="/admin/config" method="post">
+                        <div class="form-group">
+                            <label for="hours">Jak často restartovat desku?</label>
+                            <input type="text" class="form-control" name="hours" id="hours"
+                                   aria-describedby="name" placeholder="V hodinách">
+                            <small class="form-text text-muted">
+                                Udejte hodiny od 2-23 (2 = každé 2 hodiny), Nynejší hodnota = Každých <span class="text-danger">{{@current_restart_time}}</span> h
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="minutes">Jak často aktualizovat desku?</label>
+                            <input class="form-control" name="minutes" id="minutes"
+                                   placeholder="Každých x minut">
+                            <small  class="form-text text-muted">
+                                Udejte minuty od 5-59 (5 = každých 5 minut deska stáhne nové soubory ze spisové služby). Nynejší hodnota = Každých <span class="text-danger">{{@current_update_time}}</span> m
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="new_url_xml">URL XML feedu</label>
+                            <input class="form-control" name="new_url_xml" id="new_url_xml"
+                                   placeholder="URL">
+                            <small  class="form-text text-muted">
+                                Zadejte URL adresu na které se nachází XML feed spisové služby pro potřeby úřední desky. Nynejší hodnota = <span class="text-danger">{{@current_xml_feed}}</span>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="new_url_files">URL souborů s dokumenty  magistrátu</label>
+                            <input class="form-control" name="new_url_files"
+                                   id="new_url_files" placeholder="URL">
+                            <small  class="form-text text-muted">
+                                Zadejte URL adresu na které se nachází PDF soubory vydávané Magistrátem pro potřeby úřední desky. Nynejší hodnota = <span class="text-danger">{{@current_files}}</span>
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="new_rss">URL RSS feedu s novinkami</label>
+                            <input class="form-control" name="new_rss"
+                                   id="new_rss" placeholder="URL">
+                            <small  class="form-text text-muted">
+                                Zadejte URL adresu na které se nachází RSS feed novinek vydávaných Magistrátem. Nynejší hodnota= <span class="text-danger">{{@rss}}</span>
+                            </small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Uložit</button>
+                    </form>
+                    <hr class="mt-2 mb-3"/>
+                    <a href="/" class="btn btn-info mx-auto my-5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-image" viewBox="0 0 16 16">
+                        <path d="M8.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                        <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v8l-2.083-2.083a.5.5 0 0 0-.76.063L8 11 5.835 9.7a.5.5 0 0 0-.611.076L3 12V2z"/>
+                    </svg> Zobrazit úřední desku z pohledu občana</a>
+
+                    <hr class="mt-2 mb-3"/>
+
+                    <a href="/admin/config/delete_logs" class="btn btn-danger mx-auto my-5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"/>
+                        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                    </svg> Vymazat logy</a>
+
+
+                    <hr class="mt-2 mb-3"/>
+
+                    <a href="/admin/reinstall" id="spinner_trigger" class="btn btn-danger mx-auto my-5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cone-striped" viewBox="0 0 16 16">
+                        <path d="m9.97 4.88.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"/>
+                    </svg> Přeinstalovat aplikaci (vymaže všechna data)</a>
+                    <small  class="form-text text-muted">
+                        Přeinstalace může trvat i několik minut, nechte prohlížeč běžet a nevypínejte okno.
+                    </small>
+                    <div class="spinner-border mx-auto my-5" id="spinner_triggered" style="height: 25vh; width: 25vh; display: none" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <hr class="mt-2 mb-3"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $( "#spinner_trigger" ).click(function() {
+        $('#spinner_triggered').toggle();
+    });
+</script>

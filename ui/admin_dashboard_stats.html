@@ -1,0 +1,87 @@
+<div class="jumbotron jumbotron-fluid my-0">
+    <div class="container">
+        <h1 class="display-4">Statistika</h1>
+        <p class="lead dred">Zde naleznete důležité informace o návštěvnosti úřední desky</p>
+    </div>
+</div>
+
+<div class="card pt-5 px-5">
+
+    <div class="container">
+
+        <div class="row">
+
+            <ul class="list-group list-group-horizontal-md my-2">
+                <li class="list-group-item dred"><b>Návštěvnost</b></li>
+                <li class="list-group-item">Dnes
+                    <div class="dblue" id="today"></div>
+                </li>
+                <li class="list-group-item">Tento měsíc
+                    <div class="dblue" id="month"></div>
+                </li>
+                <li class="list-group-item">Tento rok
+                    <div class="dblue" id="year"></div>
+                </li>
+                <li class="list-group-item">Za celou dobu
+                    <div class="dblue" id="alltime"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row">
+            <div style="width: 100%;min-height: 50%;">
+                <canvas id="chart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "statistics",
+            success: function (response) {
+                console.log(response);
+                var data = JSON.parse(response);
+                $("#today").html(data["today"]);
+                $("#month").html(data["month"]);
+                $("#year").html(data["year"]);
+                $("#alltime").html(data["total"]);
+                var graph = data["graph"];
+                var labels = graph.map(function (e) {
+                    return e.date;
+                });
+                var data = graph.map(function (e) {
+                    return e.visitors;
+                });
+
+                var ctx = document.getElementById('chart').getContext('2d');
+                var config = {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Návštěvnost tento měsíc (lidí za den)',
+                            data: data,
+                            backgroundColor: 'rgba(0, 119, 204, 0.3)'
+                        }]
+                    },
+                    options: {
+                        responsive: true
+                    }
+
+                };
+
+                var chart = new Chart(ctx, config);
+
+            },
+            error: function (response) {
+                console.log('An error occurred.');
+                console.log(response);
+            },
+        });
+    });
+
+</script>

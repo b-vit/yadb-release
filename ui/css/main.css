@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+body{
+    font-family: 'Fira Sans', sans-serif;
+    background-color: white;
+}
+
+:root {
+    --animate-delay: 0.5s;
+}
+
+.spinster{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:30vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20vh;
+    height: 20vh;
+}
+
+.foots {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    align-content: center;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 7vh;
+}
+
+.foots-invalida a{
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    width: 50%;
+}
+
+.foots a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    width: 25%;
+}
+
+.flying-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.alert-fixed {
+    position:relative;
+    top: 0px;
+    left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 100%;
+    height: inherit;
+    border-radius:0px
+}
+
+
+#overlay {
+    position: absolute;
+    display: none;
+    width:100%;
+    height:100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.btn-menu{
+    height: 15vh!important;
+    font-size: x-large;
+    width: 100%;
+    background:  #006fb7;
+    color: white;
+}
+
+.btn-filtr{
+    height: 7vh!important;
+    font-size: x-large;
+    color: white;
+    width: 100%;
+    flex-grow: 1;
+    text-align: center;
+    background: #006fb7;
+}
+
+.menu-flex-buttons-group {
+    margin: 1vh auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    max-width: 90%;
+    color: white;
+}
+
+.btn-filtr-sub{
+    height: 7vh!important;
+    font-size: large;
+    color: white;
+    width: 100%;
+    flex-grow: 1;
+    text-align: center;
+    align-content: center;
+    background: #006fb7;
+}
+
+.dotted-background{
+    background: linear-gradient(90deg, white 21px, transparent 1%) center, linear-gradient(white 21px, transparent 1%) center, black;
+    background-size: 22px 22px;
+}
+
+.blue-ish-background{
+    background:  #006fb7;
+}
+
+.vice-background{
+    background:  #006fb7;
+}
+
+.kbord{
+    position:relative;
+    width: 100%;
+}
+
+.btn-board{
+    height: 8vh;
+}
+
+.table-font{
+    font-size: 5rem!important;
+}
+
+.front-desk {
+    /* Pro potřeby testování
+    max-width: 1080px;
+    min-width: 1080px;*/
+    width: 100%;
+    height: 100%;
+}

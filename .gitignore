@@ -1,0 +1,12 @@
+/tmp/
+/.idea/
+/ui/pdf/
+/ui/xml/
+/uploads/
+installed.txt
+secret.ini
+url.ini
+file_url.ini
+cron_restart.ini
+cron_preset.ini
+rss.ini

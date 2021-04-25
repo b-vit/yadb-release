@@ -1,0 +1,23 @@
+<F3:repeat group="{{ \Flash::instance()->getMessages() }}" value="{{ @msg }}">
+    <div class="alert alert-{{ @msg.status }} alert-dismissable alert-fixed">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ @msg.text | esc }}
+    </div>
+</F3:repeat>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="card blue-ish-background w-50 align-content-center" style="margin-top: 25vh;">
+            <form action="/admin" method="POST">
+                <h1 class="h4 display vice-background rounded p-3 my-3 text-white">Přihlášení do administrátorské sekce</h1>
+                <label for="name" class="sr-only">Uživatelské jméno</label>
+                <input type="text" id="name" name="name" class="form-control mb-3" placeholder="Uživatelské jméno" required
+                       autofocus>
+                <label for="password" class="sr-only">Heslo</label>
+                <input type="password" id="password" name="password" class="form-control mb-3" placeholder="Heslo" required>
+                <button class="btn btn-lg btn-info btn-block btn-rounded mb-3" type="submit">Přihlásit</button>
+            </form>
+        </div>
+    </div>
+</div>
+

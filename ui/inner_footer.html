@@ -1,0 +1,56 @@
+<div class="py-auto">
+    <check if="{{ @handicap==true }} AND {{@board==true}}">
+        <true>
+            <nav class="navbar w-100 navbar-light bg-dark animate__animated animate__slideInUp foots-invalida" style="position:fixed; bottom: 7vh">
+                <a class="btn btn-rounded blue-ish-background px-5 mx-auto my-1" id="previousCustom" onclick="scrollDown()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    </svg>
+                </a>
+                <a class="btn btn-rounded blue-ish-background px-5 mx-auto my-1" id="nextCustom" onclick="scrollDown()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                    </svg>
+                </a>
+            </nav>
+        </true>
+    </check>
+    <nav class="navbar navbar-light bg-dark foots">
+        <div class="container-fluid justify-content-center">
+            <check if="{{@handicap}}">
+                <true>
+                    <a href="/handicap" class="btn btn-rounded btn-success px-5 mx-auto">
+                        <img src="{{@BASE}}/ui/icons/accessible-white-24dp.svg" style="width:32px;height:32px">
+                    </a>
+                </true>
+                <false>
+                    <a href="/handicap" class="btn btn-rounded btn-danger px-5 mx-auto">
+                        <img src="{{@BASE}}/ui/icons/accessible-white-24dp.svg" style="width:32px;height:32px">
+                    </a>
+                </false>
+            </check>
+
+
+            <a href="/inner_content" class="btn btn-rounded blue-ish-background px-5 mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                     class="bi bi-house-fill"
+                     viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                    <path fill-rule="evenodd"
+                          d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                </svg>
+            </a>
+            <a class="btn btn-rounded blue-ish-background px-5 mx-auto my-1" id="forward" onclick="toggleKBFunction()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-search"
+                     viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            </a>
+
+            <a disabled class="btn btn-rounded blue-ish-background px-5 mx-auto border-black">
+                <div id="time" class="align-content-center"></div>
+            </a>
+        </div>
+    </nav>
+</div>

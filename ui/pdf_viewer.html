@@ -1,0 +1,36 @@
+<div>
+    <div id="pdf" style="overflow: auto">
+            <iframe id="pdf-js-viewer" src="{{@BASE}}/ui/pdfjs/web/viewer.html?file=%2Fui/pdf/{{@pdf_file}}"
+                    title="webviewer" frameborder="0" width="100%"  style="height: 90vh;">
+            </iframe>
+    </div>
+
+    <nav class="navbar navbar-light bg-dark foots" style="height: 10vh">
+        <div class="container-fluid justify-content-center">
+            <a href="javascript:void(0);" class="btn btn-rounded vice-background px-5 mx-auto" id="cancel" onclick="toggle_overlay()">
+                Zavřít
+            </a>
+
+            <button class="btn px-0 mx-auto animate__animated animate__heartBeat animate__repeat-2">
+                <div id="qr"></div>
+            </button>
+
+            <a disabled class="btn btn-rounded vice-background px-5 mx-auto border-black">
+                <div id="time" class="align-content-center"></div>
+            </a>
+        </div>
+    </nav>
+</div>
+<div style="display: none" id="idfile_data" data-idf="{{@pdf_file_id}}"></div>
+
+<script type="text/javascript">
+    _idf = $('#idfile_data').data("idf");
+    var qrcode = new QRCode("qr", {
+        text: "{{@pdf_file_url}}"+_idf+"",
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+</script>

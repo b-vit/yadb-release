@@ -1,0 +1,49 @@
+<include href="header.html"/>
+
+<div id="overlay"></div>
+
+<div class="col d-flex justify-content-center">
+    <div style="position: sticky">
+        <F3:repeat group="{{ \Flash::instance()->getMessages() }}" value="{{ @msg }}">
+            <div class="alert alert-{{ @msg.status }} alert-dismissable alert-fixed">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ @msg.text | esc }}
+            </div>
+        </F3:repeat>
+    </div>
+</div>
+
+<check if="{{ @handicap==true }}">
+    <true>
+        <style>
+            .front-desk {
+                padding-top: 50vh;
+                margin-bottom: 15vh
+            }
+            body{
+                background: #0052D4;
+                background: -webkit-linear-gradient(to right, #6FB1FC, #4364F7, #0052D4);
+                background: linear-gradient(to right, #6FB1FC, #4364F7, #0052D4);
+            }
+
+        </style>
+    </true>
+    <false>
+        <style>
+            .front-desk {margin-bottom: 7vh}
+        </style>
+    </false>
+</check>
+
+<div id="content" class="front-desk">
+    <include href="{{ @content }}"/>
+</div>
+
+<check if="{{ @idle==true }}">
+    <false>
+        <script type="text/javascript" src="{{ @BASE }}/ui/js/idle.js"></script>
+    </false>
+</check>
+
+<include href="scripts.html"/>
+<include href="footer.html"/>

@@ -1,0 +1,85 @@
+<div class="card dotted-background">
+    <img src="{{@BASE}}/ui/img/logo/eldes2.svg" class="card-img-top img-fluid blue-ish-background shadow-3-strong mb-5 py-4"/>
+
+    <div class="card-body">
+
+        <div class="d-grid gap-5 col-10 mx-auto">
+            <form action="/all">
+                <div>
+                    <button type="submit" class="btn btn-primary btn-menu my-5"><img
+                            src="{{@BASE}}/ui/icons/list-white-24dp.svg"/>
+                        <b>Všechny dokumenty úřední desky</b>
+                    </button>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-primary btn-filtr" data-mdb-toggle="collapse"
+                            data-mdb-target="#collapse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-funnel" viewBox="0 0 16 16">
+                            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
+                        </svg>
+                        <b>Filtrovat dokumenty</b>
+                    </button>
+                </div>
+            </form>
+
+            <form action="/filtered">
+                <div class="collapse" id="collapse">
+
+                    <div class="menu-flex-buttons-group">
+                        <button type="submit" name="category" value="dotace"
+                                class="btn  btn-filtr-sub mx-2">Dotace
+                        </button>
+                        <button type="submit" name="category" value="drazba"
+                                class="btn  btn-filtr-sub mx-2">Dražba
+                        </button>
+                        <button type="submit" name="category" value="zvirata"
+                                class="btn  btn-filtr-sub mx-2">Nalezená zvířata
+                        </button>
+                    </div>
+                    <div class="menu-flex-buttons-group">
+                        <button type="submit" name="category" value="ostatni"
+                                class="btn btn-filtr-sub mx-2">Ostatní
+                        </button>
+                        <button type="submit" name="category" value="oznameni"
+                                class="btn btn-filtr-sub mx-2">Oznámení
+                        </button>
+                        <button type="submit" name="category" value="rozhodnuti"
+                                class="btn btn-filtr-sub mx-2">Rozhodnutí, usnesení
+                        </button>
+                    </div>
+
+                    <div class="menu-flex-buttons-group">
+                        <button type="submit" name="category" value="smlouvy"
+                                class="btn btn-filtr-sub mx-2">Veřejnoprávní smlouvy
+                        </button>
+                        <button type="submit" name="category" value="vyhlasky"
+                                class="btn btn-filtr-sub mx-2">Veřejné vyhlášky
+                        </button>
+                        <button type="submit" name="category" value="rizeni"
+                                class="btn btn-filtr-sub mx-2">Výběrová řízení
+                        </button>
+                    </div>
+
+                    <div class="menu-flex-buttons-group">
+                        <button type="submit" name="category" value="nalezy"
+                                class="btn btn-filtr-sub mx-2">Ztráty a nálezy
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+            <a href="/news">
+                <button class="btn btn-primary btn-menu" type="button"><img
+                        src="{{@BASE}}/ui/icons/library_books-white-24dp.svg"/> Novinky
+                </button>
+            </a>
+            <a href="/info">
+                <button class="btn btn-primary btn-menu" type="button"><img
+                        src="{{@BASE}}/ui/icons/info-white-24dp.svg"/> Návod na používání úřední desky
+                </button>
+            </a>
+        </div>
+    </div>
+</div>

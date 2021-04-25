@@ -1,0 +1,68 @@
+<style>
+    html, body {
+        height: 100%;
+
+    }
+
+    #cover {
+        position: fixed;
+        padding: 0;
+        margin: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<script>
+    function repeatFading() {
+        $('#front_header').delay(3500).fadeOut(1000).delay(1500).fadeIn(1000);
+    }
+
+    setInterval(repeatFading, 500);
+</script>
+
+<div>
+    <a href="/inner_content">
+        <div id="cover" class="blue-ish-background"></div>
+        <check if="{{@empty == TRUE}}">
+            <false>
+                <img id="front_header" class="img-fluid position-absolute"
+                     style="z-index: 5000; top: 20%"
+                     src="{{@BASE}}/ui/img/logo/frontdesk.png">
+            </false>
+        </check>
+
+        <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+
+                <repeat group="{{ @images }}" value="{{ @image }}">
+                    <check if="{{ @active == true }}">
+                        <true>
+                            <div class="carousel-item active">
+                                <img class="img-fluid d-block w-100" src="{{@BASE}}/uploads/{{@image.name}}">
+                            </div>
+                            {{@active=false}}
+                        </true>
+                        <false>
+                            <div class="carousel-item">
+                                <img class="img-fluid d-block w-100" src="{{@BASE}}/uploads/{{@image.name}}">
+                            </div>
+                        </false>
+                    </check>
+                </repeat>
+
+                <check if="{{@empty == TRUE}}">
+                    <true>
+                        <div class="carousel-item active">
+                            <img class="img-fluid d-block mx-auto"
+                                 src="{{@BASE}}/ui/img/logo/frontdesk.png">
+                        </div>
+                    </true>
+                </check>
+
+            </div>
+        </div>
+    </a>
+</div>
