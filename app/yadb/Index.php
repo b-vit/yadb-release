@@ -12,7 +12,7 @@ namespace yadb;
 class Index extends MainController {
 
     /**
-     * Instalace všech datových tříd ze složky yadb/data.
+     * Instalace všech tříd (a jejich datových protějšků).
      * @param \Base $base
      */
     public function install(\Base $base)
@@ -59,8 +59,18 @@ class Index extends MainController {
             $base->reroute("/admin");
         } else {
 
+            // Vytvoření explicitně složek / cest kvůli Linuxu
             $config_path=$base->get('ROOT') . '/config';
             if (!file_exists($config_path)) mkdir($config_path,0777);
+
+            $uploads_path=$base->get('ROOT') . '/uploads';
+            if (!file_exists($uploads_path)) mkdir($uploads_path,0777);
+
+            $logs_path=$base->get('ROOT') . '/logs';
+            if (!file_exists($logs_path)) mkdir($logs_path,0777);
+
+            $pdf_path=$base->get('ROOT') . '/ui/pdf';
+            if (!file_exists($pdf_path)) mkdir($pdf_path,0777);
 
             $secret_file = $base->get('ROOT') . '/config/secret.ini';
             $secret = bin2hex(random_bytes(24));

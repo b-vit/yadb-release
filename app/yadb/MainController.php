@@ -19,7 +19,7 @@ class MainController
     }
 
     /**
-     * Vymaže rekurzivně soubory ve složce i s ní
+     * Vymaže rekurzivně soubory ve složce i s ní.
      * Převzato z - https://paulund.co.uk/php-delete-directory-and-files-in-directory
      * @param string $target
      */
@@ -88,7 +88,7 @@ class MainController
     }
 
     /**
-     * Kontrola přístupových práv uživatelů
+     * Kontrola přístupových práv uživatelů.
      * @param \Base $base
      */
     public function rules(\Base $base)
@@ -121,7 +121,7 @@ class MainController
 
     /**
      * Kontroluje, jestli je aplikace yadb již na tomto stroji nainstalovaná
-     * pomocí textového souboru vytvořeného při instalaci
+     * pomocí textového souboru vytvořeného při instalaci.
      * @param \Base $base
      *
      * @return bool
@@ -133,7 +133,7 @@ class MainController
     }
 
     /**
-     * Zkontroluje, jestli je aplikace v idle režimu podle session a nastaví hive proměnnou pro další zpracování v templatech
+     * Zkontroluje, jestli je aplikace v idle režimu podle session a nastaví hive proměnnou pro další zpracování v templatech.
      */
     public function check_idle()
     {
@@ -146,7 +146,7 @@ class MainController
     }
 
     /**
-     * Zkontroluje, jestli je aplikace v režimu handicap a nastaví hive proměnnou pro další zpracování v templatech
+     * Zkontroluje, jestli je aplikace v režimu handicap a nastaví hive proměnnou pro další zpracování v templatech.
      */
     public function check_handicap()
     {
@@ -159,7 +159,7 @@ class MainController
     }
 
     /**
-     * Nastavení návštěvnosti
+     * Nastavení návštěvnosti.
      */
     function visits()
     {
@@ -177,20 +177,5 @@ class MainController
             $visits->visitors = $visits->visitors + 1;
             $visits->save();
         }
-    }
-
-    /**
-     * Restartování desky
-     * @param \Base $base
-     */
-    public function restart(\Base $base)
-    {
-        exec('nohup sudo /sbin/reboot');
-    }
-
-    public function test_cron(\Base $base)
-    {
-        $logger = new \Log('system.log');
-        $logger->write('TESTCRON','d.m.Y [H:i:s] O');
     }
 }

@@ -11,7 +11,7 @@ namespace yadb;
 class User extends MainController
 {
     /**
-     * Implementace funkce install, vytvoří databázové tabulky users a role
+     * Implementace funkce install, vytvoří databázové tabulky users a role.
      * @param \Base $base
      */
     public function install(\Base $base)
@@ -50,7 +50,7 @@ class User extends MainController
     }
 
     /**
-     * Vykresluje šablonu admin_index.html
+     * Vykresluje šablonu admin_index.html.
      * @param \Base $base
      */
     public function get_admin_register(\Base $base)
@@ -60,7 +60,7 @@ class User extends MainController
     }
 
     /**
-     * Zpracovává registraci hlavního administrátora
+     * Zpracovává registraci hlavního administrátora.
      * @param \Base $base
      */
     public function post_admin_register(\Base $base)
@@ -92,7 +92,7 @@ class User extends MainController
     }
 
     /**
-     * Vykresluje šablonu admin_index.html
+     * Vykresluje šablonu admin_index.html.
      * @param \Base $base
      */
     public function get_admin_login(\Base $base)
@@ -102,7 +102,7 @@ class User extends MainController
     }
 
     /**
-     * Zpracovává přihlášení správce
+     * Zpracovává přihlášení správce.
      * @param \Base $base
      */
     public function post_admin_login(\Base $base)
@@ -125,7 +125,7 @@ class User extends MainController
     }
 
     /**
-     * Zpracovává odhlášení správce
+     * Zpracovává odhlášení správce.
      * @param \Base $base
      */
     public function get_admin_logout(\Base $base)
@@ -139,7 +139,7 @@ class User extends MainController
     }
 
     /**
-     * Vykreslí šablonu se všemi zaregistrovanými správci
+     * Vykreslí šablonu se všemi zaregistrovanými správci.
      * @param \Base $base
      * @throws \Exception
      */
@@ -162,7 +162,7 @@ class User extends MainController
 
 
     /**
-     * Zpracovává vytváření správců hlavním administrátorem
+     * Zpracovává vytváření správců hlavním administrátorem.
      * @param \Base $base
      */
     public function post_admin_administrators(\Base $base)
@@ -199,7 +199,7 @@ class User extends MainController
 
 
     /**
-     * Vykresluje hlavní dashboard pro správu aplikace
+     * Vykresluje hlavní dashboard pro správce a získává informace o provozu desky.
      * @param \Base $base
      */
     public function get_admin_dashboard(\Base $base)
@@ -210,14 +210,13 @@ class User extends MainController
         $sys_inf = $this->sys_info($base);
         $t = $sys_inf['uptime']; //Uptime v sekundách
         $sys_inf['uptime'] = sprintf('%02d:%02d:%02d', ($t / 3600), ($t / 60 % 60), $t % 60);
+        $sys_inf['temp']=intval($sys_inf['temp'])/1000;
         $base->set('system_info', $sys_inf);
-
-
         echo \Template::instance()->render('admin_index.html');
     }
 
     /**
-     * Dekóduje JSON soubor ve kterém jsou informace z operačního systému
+     * Dekóduje JSON soubor ve kterém jsou informace z operačního systému.
      * @param \Base $base
      * @return mixed
      */
@@ -230,7 +229,7 @@ class User extends MainController
     }
 
     /**
-     * Zpracovává odstranění správce
+     * Zpracovává odstranění správce.
      * @param \Base $base
      */
     public function post_remove_admin(\Base $base)
@@ -247,7 +246,7 @@ class User extends MainController
     }
 
     /**
-     * Zpracovává úpravu správce hlavním administrátorem
+     * Zpracovává úpravu správce hlavním administrátorem.
      * @param \Base $base
      */
     public function post_edit_admin(\Base $base)
@@ -285,7 +284,7 @@ class User extends MainController
     }
 
     /**
-     * Vykreslí šablonu s logy
+     * Vykreslí šablonu s logy.
      * @param \Base $base
      */
     public function get_admin_logs(\Base $base)
@@ -303,7 +302,7 @@ class User extends MainController
     }
 
     /**
-     * Vykreslí šablonu s nastavením správcova účtu
+     * Vykreslí šablonu s nastavením správcova účtu.
      * @param \Base $base
      * @throws \Exception
      */
@@ -321,7 +320,7 @@ class User extends MainController
     }
 
     /**
-     * Zpracovává úpravu nastavení správcova účtu
+     * Zpracovává úpravu nastavení správcova účtu.
      * @param \Base $base
      */
     public function post_admin_settings(\Base $base)
@@ -368,7 +367,7 @@ class User extends MainController
     }
 
     /**
-     * Vykresluje šablonu "informace o programu"
+     * Vykresluje šablonu "informace o programu".
      * @param \Base $base
      */
     public function get_admin_info(\Base $base)
@@ -380,7 +379,7 @@ class User extends MainController
     }
 
     /**
-     * Vykresluje šablonu konfigurace aplikace yadb
+     * Vykresluje šablonu konfigurace aplikace yadb.
      * @param \Base $base
      */
     public function get_admin_config(\Base $base)
@@ -405,12 +404,12 @@ class User extends MainController
 
         $base->set('current_user', $base->get('SESSION.user'));
 
-        \Flash::instance()->addMessage('Špatné nastavení může vést ke ztrátě funkčnosti desky a nutnosti přeinstalace. Měňte pouze v případě, že víte, co děláte.', 'danger');
+        \Flash::instance()->addMessage('Špatné nastavení může vést ke ztrátě funkčnosti desky a nutnosti přeinstalace. Měňte pouze v případě, že víte, co děláte.', 'warning');
         echo \Template::instance()->render('admin_index.html');
     }
 
     /**
-     * Zpracovává změnu konfigurace aplikace
+     * Zpracovává změnu konfigurace aplikace.
      * @param \Base $base
      */
     public function post_admin_config(\Base $base)
@@ -483,7 +482,7 @@ class User extends MainController
     }
 
     /**
-     * Smaže logy
+     * Smaže logy.
      * @param \Base $base
      */
     public function delete_logs(\Base $base)

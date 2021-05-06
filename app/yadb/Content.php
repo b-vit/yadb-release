@@ -96,6 +96,8 @@ class Content extends MainController
         if (!$this->is_online($url) OR !$this->is_online($urlf))
         {
             //echo 'Nepřipojeno';
+            $logger = new \Log('system.log');
+            $logger->write('Dokumenty na desce se nepodařilo aktualizovat, není připojena ke zdrojovému serveru.','d.m.Y [H:i:s] O');
             $base->reroute("/inner_content");
         } else {
             $this->get_actual_xml($base, $url);
@@ -281,7 +283,7 @@ class Content extends MainController
     }
 
     /**
-     * @deprecated Již nepoužívaná funkce
+     * @deprecated Již nepoužívaná funkce.
      * @param \Base $base
      * @param bool $online
      */
@@ -301,7 +303,7 @@ class Content extends MainController
     }
 
     /**
-     * Vykreslí šablonu s návodem na ovládání úřední desky
+     * Vykreslí šablonu s návodem na ovládání úřední desky.
      * @param \Base $base
      */
     public function get_info(\Base $base)

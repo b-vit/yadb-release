@@ -1,46 +1,23 @@
-<style>
-    .jumbotron {
-        background-image: url("{{@BASE}}/ui/img/wave2.svg");
-        background-size: cover;
-        min-height: 30vh;
-    }
-</style>
+    <div class="container-fluid my-auto">
 
-<div style="height: 100vh; display: flex; background-color: white">
-    <div class="container-fluid my-auto" style="display: flex; align-items: center;">
-
-        <div class="row"  style="flex-grow: 1;">
-
-            <div class="col-lg-6 mx-0 px-0">
-                <div style="width:100%;height:100%;background:white; display: flex; align-items: center; justify-content: center">
-                    <h1>
-                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
-                            <path fill-rule="evenodd"
-                                  d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
-                        </svg>
-                        Konfigurace elektronické úřední desky
-                    </h1>
-                </div>
-            </div>
-
-            <div class="col-lg-6 mx-0 px-0">
+        <div class="row mx-auto">
+            <div class="col-lg-12 mx-0 px-0">
                 <div class="card bg-light px-5 py-5">
                     <form action="/admin/config" method="post">
+                        <h2> Konfigurace elektronické úřední desky </h2>
                         <div class="form-group">
-                            <label for="hours">Jak často restartovat desku?</label>
+                            <label for="hours">Jak často restartovat desku? <span class="text-danger">V TUTO CHVÍLI NEFUNKČNÍ</span></label>
                             <input type="text" class="form-control" name="hours" id="hours"
                                    aria-describedby="name" placeholder="V hodinách">
                             <small class="form-text text-muted">
                                 Udejte hodiny od 2-23 (2 = každé 2 hodiny), Nynejší hodnota = Každých <span class="text-danger">{{@current_restart_time}}</span> h
                             </small>
                         </div>
-                        <div class="form-group">
-                            <label for="minutes">Jak často aktualizovat desku?</label>
+                        <div class="form-group" disabled>
+                            <label for="minutes">Jak často aktualizovat desku? <span class="text-danger">V TUTO CHVÍLI NEFUNKČNÍ</span></label>
                             <input class="form-control" name="minutes" id="minutes"
                                    placeholder="Každých x minut">
+                             opakované aktualizace a restart jsou volány cronem: <code>sudo crontab -e</code> pro více informací a změnu hodnot
                             <small  class="form-text text-muted">
                                 Udejte minuty od 5-59 (5 = každých 5 minut deska stáhne nové soubory ze spisové služby). Nynejší hodnota = Každých <span class="text-danger">{{@current_update_time}}</span> m
                             </small>
@@ -97,14 +74,13 @@
                         Přeinstalace může trvat i několik minut, nechte prohlížeč běžet a nevypínejte okno.
                     </small>
                     <div class="spinner-border mx-auto my-5" id="spinner_triggered" style="height: 25vh; width: 25vh; display: none" role="status">
-                        <span class="sr-only">Loading...</span>
+                        <span class="sr-only">Načítání ...</span>
                     </div>
                     <hr class="mt-2 mb-3"/>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 <script>
     $( "#spinner_trigger" ).click(function() {
