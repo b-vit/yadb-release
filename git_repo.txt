@@ -1,0 +1,2 @@
+Release git repo:
+https://github.com/b-vit/yadb-release

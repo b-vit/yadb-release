@@ -115,6 +115,3 @@ TROUBLESHOOTING:
 Pokud selže připojení k serveru města při instalaci, zavolejte znovu cestu /update nebo aplikaci manuálně přeinstalujte smazáním souboru /config/installed.txt a zavoláním cesty /install
 
 Pokud nelze spustit apache, smažte komentáře při z konfiguračních souborů Apache (" # toto změňte podle vašeho umístění XAMPP") a nevkládejte kód s komentáři.
-
-Release git repo:
-https://github.com/b-vit/yadb-release
