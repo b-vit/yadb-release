@@ -23,7 +23,7 @@ $ sudo nano /etc/apache2/apache2.conf
 # Nalezněte, kde se nachází následující a změňte AllowOverride None na AllowOverride All
 <Directory /var/www/>
         Options Indexes FollowSymLinks
-        AllowOverride All # <--------- Změnit z None na All
+        AllowOverride All # <--------- Změnit z None na All (tento komentář vymažte)
         Require all granted
 </Directory>
 
@@ -87,7 +87,7 @@ do souboru \xampp\apache\conf\extra\httpd-vhosts.conf vložte:
 
 <VirtualHost *:80>
     ServerAdmin webmaster@localhost
-    DocumentRoot "C:/xampp/htdocs/yadb-release" # toto změňte podle vašeho umístění XAMPP
+    DocumentRoot "C:/xampp/htdocs/yadb-release" # toto změňte podle vašeho umístění XAMPP (tento komentář vymažte)
     ServerName yadb.local
     ErrorLog "logs/yadb-error.log"
     CustomLog "logs/yadb-access.log" common
@@ -113,3 +113,8 @@ Přidejte na nový řádek:
 TROUBLESHOOTING:
 
 Pokud selže připojení k serveru města při instalaci, zavolejte znovu cestu /update nebo aplikaci manuálně přeinstalujte smazáním souboru /config/installed.txt a zavoláním cesty /install
+
+Pokud nelze spustit apache, smažte komentáře při z konfiguračních souborů Apache (" # toto změňte podle vašeho umístění XAMPP") a nevkládejte kód s komentáři.
+
+Release git repo:
+https://github.com/b-vit/yadb-release
