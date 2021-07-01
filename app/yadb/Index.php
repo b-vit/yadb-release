@@ -17,6 +17,7 @@ class Index extends MainController {
      */
     public function install(\Base $base)
     {
+        // F3 nefunguje jak by mělo, proto je potřeba tabulky nastavit ručně...
         $Stats = new Stats();
         $Stats->install($base);
 
@@ -43,8 +44,6 @@ class Index extends MainController {
 
         $installed_file = $base->get('ROOT') . '/config/installed.txt';
         unlink($installed_file);
-        $logger = new \Log('system.log');
-        $logger->write('Aplikace byla přeinstalována.','d.m.Y [H:i:s] O');
         $this->setup_everything($base);
     }
 
@@ -58,7 +57,6 @@ class Index extends MainController {
             \Flash::instance()->addMessage("Aplikace yadb již byla nainstalována, pokud chcete aplikaci přeinstalovat, smažte soubor installed.txt ve složce config a zavolejte /install znova (VAROVÁNÍ, toto nenávratně přeinstaluje celou aplikaci - vymaže databázi a všechna data)", 'danger');
             $base->reroute("/admin");
         } else {
-
             // Vytvoření explicitně složek / cest kvůli Linuxu
             $config_path=$base->get('ROOT') . '/config';
             if (!file_exists($config_path)) mkdir($config_path,0777);
@@ -78,6 +76,9 @@ class Index extends MainController {
 
             $this->install($base);
 
+            $installed_file = $base->get('ROOT') . '/logs/system_info.json';
+            $base->write($installed_file,'{"cpu":"0","temp":"0","current_memory":"0","total_memory":"0","uptime":"0","current_hdd":"0","total_hdd":"0"}');
+
             $installed_file = $base->get('ROOT') . '/config/installed.txt';
             $base->write($installed_file,"0");
 
@@ -96,18 +97,22 @@ class Index extends MainController {
             $installed_file = $base->get('ROOT') . '/config/rss.ini';
             $base->write($installed_file,"https://www.mmdecin.cz/index.php?format=feed&type=rss");
 
+            $logger = new \Log('system.log');
+            $logger->write("Aplikace yadb byla nainstalována.",'d.m.Y [H:i:s] O');
 
-            $url ="http://77.95.47.242/ost/xml/export.php?command=ud";
+            $logger = new \Log('error.log');
+            $logger->write("Aplikace yadb byla nainstalována.",'d.m.Y [H:i:s] O');
+
+            $logger = new \Log('user.log');
+            $logger->write("Aplikace yadb byla nainstalována.",'d.m.Y [H:i:s] O');
+
+            $url = $base->read($base->get('ROOT') . '/config/url.ini');
             $xml = file_get_contents($url);
             $path = $base->get('ROOT') . "/ui/xml";
             if (!file_exists($path)) {
                 mkdir($path, 0777, true);
                 file_put_contents($base->get('ROOT') . "/ui/xml/main_xml.xml", $xml, LOCK_EX);
             }
-
-            $logger = new \Log('system.log');
-            $logger->write("Aplikace yadb byla nainstalována.",'d.m.Y [H:i:s] O');
-
             $content = new \yadb\Content();
             $content->retrieve_xml_feed($base,array("/reinstall"));
         }

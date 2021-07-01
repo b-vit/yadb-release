@@ -7,7 +7,7 @@ RewriteEngine On
 #
 # RewriteBase /
 
-RewriteRule ^(app|tmp|config|lib|logs)\/|\.ini$ - [R=404] # přidáno config|lib|logs oproti default
+RewriteRule ^(app|tmp|config|lib|logs|.git|scripts)\/|\.ini$ - [R=404] # přidáno config|lib|logs oproti default
 
 
 RewriteCond %{REQUEST_FILENAME} !-l

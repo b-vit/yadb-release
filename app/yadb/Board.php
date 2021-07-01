@@ -4,7 +4,7 @@ namespace yadb;
 
 /**
  * Class Board
- * Třída Board zajišťuje vykreslení interaktivní HTML tabulky, která slouží jako srdce uživatelského rozhraní elektronické úřední desky.
+ * Třída Board zajišťuje vykreslení interaktivní HTML tabulky, která slouží jako střed uživatelského rozhraní elektronické úřední desky.
  * @package yadb
  */
 class Board extends MainController
@@ -88,7 +88,7 @@ class Board extends MainController
         $xml = simplexml_load_file($base->get('ROOT')."/ui/xml/main_xml.xml");
         $tablehtml = '
             <div class="table-responsive">
-            <table class="table table-striped" data-page-length="5" id="main_table">
+            <table class="table table-striped" data-page-length="8" id="main_table">
             <thead>
                 <tr style="background: #006fb7; color: white;font-size:x-large">
                     <th>Typ</th>

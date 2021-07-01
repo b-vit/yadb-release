@@ -69,7 +69,7 @@ class User extends MainController
         $secret = $base->read($secret_file);
         if ($_POST['secret'] == $secret) {
             $user = new data\User();
-            if ($user->find(array('name=?', $base->get('POST.name'))) == true) {
+            if (!empty($user->find(array('name=?', $base->get('POST.name'))))) {
                 \Flash::instance()->addMessage('Jméno je již zabrané, zvolte jiné.', 'danger');
                 $base->reroute('/register');
             } elseif ($base->get('POST.name') == $base->get('POST.password')) {
@@ -170,7 +170,7 @@ class User extends MainController
         if ($base->get('POST.token') == $base->get('SESSION.csrf')) {
             $user = new data\User();
 
-            if ($user->find(array('name=?', $base->get('POST.name'))) == true) {
+            if (!empty($user->find(array('name=?', $base->get('POST.name'))))) {
                 \Flash::instance()->addMessage('Jméno je již zabrané, zvolte jiné.', 'danger');
                 $base->reroute('/admin/administrators');
             } elseif ($base->get('POST.password') != $base->get('POST.password_check')) {
@@ -207,7 +207,7 @@ class User extends MainController
         $base->set('admin_content', 'admin_dashboard.html');
         $base->set('dashboard_content', 'admin_dashboard_home.html');
         $base->set('current_user', $base->get('SESSION.user'));
-        $sys_inf = $this->sys_info($base);
+        $sys_inf = $this->sys_info($base); // problem
         $t = $sys_inf['uptime']; //Uptime v sekundách
         $sys_inf['uptime'] = sprintf('%02d:%02d:%02d', ($t / 3600), ($t / 60 % 60), $t % 60);
         $sys_inf['temp']=intval($sys_inf['temp'])/1000;
@@ -220,8 +220,7 @@ class User extends MainController
      * @param \Base $base
      * @return mixed
      */
-    function sys_info(\Base $base)
-    {
+    function sys_info(\Base $base){
         $file = join(DIRECTORY_SEPARATOR, array($base->get('ROOT'), 'logs', 'system_info.json'));
         $jstr = file_get_contents($file);
         $system_info = json_decode($jstr, true);

@@ -1,0 +1,115 @@
+Linux (Ubuntu) [PRODUKCE nebo testování]
+
+Apache a PHP
+$ sudo apt-get update
+$ sudo apt-get install apache2
+$ sudo a2enmod rewrite # Zapnutí mod rewrite pro apache
+$ sudo a2enmod headers # Kvůli F3 framework
+$ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/yadb.conf
+$ sudo nano /etc/apache2/sites-available/yadb.conf
+# Vložit a uložit:
+
+<VirtualHost *:80>
+        ServerName yadb.local
+        ServerAlias yadb
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/yadb-release/
+        ErrorLog ${APACHE_LOG_DIR}/yadb-error.log
+        CustomLog ${APACHE_LOG_DIR}/yadb-access.log combined
+</VirtualHost>
+
+# Nastavit apache aby četl .htaccess
+$ sudo nano /etc/apache2/apache2.conf
+# Nalezněte, kde se nachází následující a změňte AllowOverride None na AllowOverride All
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride All # <--------- Změnit z None na All
+        Require all granted
+</Directory>
+
+Instalace PHP
+$ sudo add-apt-repository ppa:ondrej/php
+$ sudo apt-get update
+$ sudo apt-get install php7.4 php7.4-common php7.4-mysql php7.4-cgi php7.4-cli php7.4-fpm php7.4-mbstring php7.4-curl php7.4-xmlrpc php7.4-gd php7.4-zip php7.4-pdo-sqlite php7.4-xml
+
+$ sudo systemctl restart apache2
+
+$ sudo nano /etc/hosts # Na konec souboru vložit: 127.0.0.1 yadb.local
+
+
+Databáze (MySQL)
+1. $ sudo apt install mysql-server
+2. $ sudo mysql_secure_installation # postupujte podle pokynů
+3. $ systemctl status mysql.service # otestování, jestli MySQL běží
+4. Vytvoření databáze (defaultně yadb)
+- $ mysql -u root -p
+- $ mysql> CREATE DATABASE yadb;
+- $ mysql> exit
+ 
+Alternativně lze pro vytvoření databáze použít PHPMyAdmin:
+$ sudo apt-get install phpmyadmin php-mbstring php-gettext -y
+$ chromium-browser "localhost/phpmyadmin" # v grafickém režimu
+
+Instalace webové aplikace
+1. Zkopírovat yadb-release do /var/www/html/ z přiloženého CD
+2. Nastavit vlastníka složky yadb-release: $ sudo chown -R www-data:www-data /var/www 
+3. Nastavit spustitelnost souborů ve scripts $ cd /var/www/html/yadb-release/scripts; sudo chmod +x system_info.sh  # příklad pro jetson nano, nemusí fungovat všude
+4. Nastavit $ sudo chmod -R 777 /var/www/html/yadb-release 
+5. Nastavit db.ini ve složce yadb-release na shodné info s databází
+6. Prohlížeč ($sudo apt install chromium-browser): http://yadb.local/install -> instalace aplikace (prvotní nastavení trvá několik minut, okno bude vypadat zmraženě)
+- Registrace administrátorského účtu -> tajné heslo /config/secret.ini
+- Přihlášení
+-- yadb.local/admin - přístup do správcovské části
+-- yadb.local/ - přístup do občanské části
+7. Crontab
+- $ sudo crontab -e
+# Vložte a uložte
+
+* * * * * cd /var/www/html/yadb-release/scripts; /bin/bash ./system_info.sh
+# Aktualizace dokumentů každých /xx minut
+*/15 * * * * curl yadb.local/update
+# Restartování desky každých /xx hodin
+1 */8 * * * sleep 60 && /sbin/reboot
+
+
+8. Nastavte automatické přihlašování po spuštění
+8.1 Nastavte, ať se systém nezamyká a neuspává se,
+8.2 Kioskový režim webového prohlížeče při spuštění: chromium-browser --kiosk "http://yadb.local"  (v XFCE4 lze tuto funkci nastavit v Session and Startup)
+
+Windows [TESTOVÁNÍ]
+1. Instalace XAMPP
+https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.8/
+Při instalaci zaškrtněte Apache a MySQL
+
+2. Vytvořte databázi 'yadb' v MySQL CLI nebo PHPMyAdmin (bin-czech-ci kódování).
+3. Vytvoření virtual host
+do souboru \xampp\apache\conf\extra\httpd-vhosts.conf vložte: 
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot "C:/xampp/htdocs/yadb-release" # toto změňte podle vašeho umístění XAMPP
+    ServerName yadb.local
+    ErrorLog "logs/yadb-error.log"
+    CustomLog "logs/yadb-access.log" common
+</VirtualHost>
+
+4. Hosts
+Otevřete jako administrátor v textovém editoru soubor:
+C:\windows\system32\drivers\etc\hosts
+Přidejte na nový řádek:
+127.0.0.1		yadb.local
+
+
+5. Do složky /htdocs/ ve složce /xampp/ vložte složku yadb-release z přiloženého CD
+6. Nastavit db.ini ve složce yadb-release na shodné info s databází
+7. Zapněte XAMPP Control panel a v něm Apache a MySQL
+8. Otevřete prohlížeč: http://yadb.local/install -> instalace aplikace (prvotní nastavení trvá několik minut, okno bude vypadat zmraženě)
+- Registrace administrátorského účtu -> tajné heslo ve složce /config/secret.ini
+- Přihlášení
+-- yadb.local/admin - přístup do správcovské části
+-- yadb.local/ - přístup do občanské části
+
+
+TROUBLESHOOTING:
+
+Pokud selže připojení k serveru města při instalaci, zavolejte znovu cestu /update nebo aplikaci manuálně přeinstalujte smazáním souboru /config/installed.txt a zavoláním cesty /install

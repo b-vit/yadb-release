@@ -29,15 +29,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="482.64681"
-     inkscape:cy="28.236612"
+     inkscape:cx="147.27617"
+     inkscape:cy="-254.6061"
      inkscape:document-units="mm"
      inkscape:current-layer="g1048"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-y="418"
      inkscape:window-maximized="1"
      inkscape:pagecheckerboard="true"
      showborder="true"
@@ -51,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -63,7 +63,7 @@
     <g
        id="g1048">
       <g
-         transform="matrix(0.24723249,0,0,0.24723249,57.376724,256.69494)"
+         transform="matrix(0.24723249,0,0,0.24723249,-63.963643,256.69494)"
          id="g2235">
         <path
            d="m 225.0145,78.9205 h 391.8609 l -9.6618,262.3974 h -0.0245 c -3.6724,96.4283 -85.36,175.0368 -185.3672,175.0368 -100.4068,0 -182.4192,-78.7301 -186.297,-175.2604 -0.0218,-0.5506 -0.0281,-1.098 -0.0449,-1.6473 z"
@@ -628,25 +628,25 @@
       </g>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:'Britannic Bold';-inkscape-font-specification:'Britannic Bold, ';letter-spacing:0px;word-spacing:0px;opacity:1;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0.565;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         x="30.46102"
-         y="292.02618"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.39816713px;line-height:1.25;font-family:'Britannic Bold';-inkscape-font-specification:'Britannic Bold, ';letter-spacing:0px;word-spacing:0px;opacity:1;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0.39495727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         x="90.520409"
+         y="290.04208"
          id="text941"><tspan
            sodipodi:role="line"
-           x="30.46102"
-           y="292.02618"
+           x="90.520409"
+           y="290.04208"
            id="tspan935"
-           style="font-size:14.11111069px;stroke:#ffffff;stroke-width:0.565;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"><tspan
-             x="30.46102"
-             y="292.02618"
-             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.11111069px;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans Bold';fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.565;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           style="font-size:9.86422253px;stroke:#ffffff;stroke-width:0.39495727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"><tspan
+             x="90.520409"
+             y="290.04208"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.86422253px;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans Bold';fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.39495727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
              id="tspan931"
              dx="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0">Elektronická úřední deska</tspan></tspan><tspan
            sodipodi:role="line"
-           x="30.46102"
-           y="306.72281"
+           x="90.520409"
+           y="300.31561"
            id="tspan939"
-           style="font-size:25.39999962px;stroke:#ffffff;stroke-width:0.565;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /></text>
+           style="font-size:17.75560188px;stroke:#ffffff;stroke-width:0.39495727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /></text>
     </g>
   </g>
 </svg>
